@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.persistence.ManyToOne;
 import java.util.List;
@@ -48,9 +49,9 @@ public class PostController {
 
 
     @PostMapping("/posts/save")
-    public String savePosts(Post post){
+    public String savePosts(Post post, RedirectAttributes ra){
         postRepository.save(post);
-
+        ra.addFlashAttribute("massage1","The Post Has Been Save Successfully");
         return "redirect:/posts";
     }
 
@@ -65,8 +66,9 @@ public class PostController {
     }
 
     @GetMapping("/posts/delete/{id}")
-    public String deletePost(@PathVariable("id") Integer id){
+    public String deletePost(@PathVariable("id") Integer id,RedirectAttributes ra){
         postRepository.deleteById(id);
+        ra.addFlashAttribute("massage","The Post Id("+id+") has been deleted ");
         return "redirect:/posts";
     }
 }

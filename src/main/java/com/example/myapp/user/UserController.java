@@ -31,9 +31,9 @@ public class UserController {
     }
 
     @PostMapping("/users/save")
-    public String saveUser(User user, RedirectAttributes raU){
+    public String saveUser(User user, RedirectAttributes ra){
         userRepository.save(user);
-        raU.addFlashAttribute("massage","The User Has Been Save Successfully");
+        ra.addFlashAttribute("massage1","The User Has Been Save Successfully");
         return "redirect:/users";
     }
 
@@ -46,8 +46,9 @@ public class UserController {
     }
 
     @GetMapping("/users/delete/{id}")
-    public String deleteUser(@PathVariable("id") Integer id){
+    public String deleteUser(@PathVariable("id") Integer id,RedirectAttributes ra){
         userRepository.deleteById(id);
+        ra.addFlashAttribute("massage","The User Id("+id+") has been deleted ");
         return "redirect:/users";
     }
 

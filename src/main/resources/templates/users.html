@@ -48,6 +48,14 @@
         </div>
     </nav>
 
+    <div th:if="${massage}" class="p-4 mt-3 alert alert-danger text-center">
+        [[${massage}]]
+    </div>
+
+    <div th:if="${massage1}" class="p-4 mt-3 alert alert-success text-center">
+        [[${massage1}]]
+    </div>
+
     <div class="p-4 mt-3 container-fluid text-center shadow bg-white">
         <h1 class="display-3">User List</h1>
 
