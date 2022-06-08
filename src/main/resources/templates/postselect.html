@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body class="container bg-dark">
+<div class="p-4 mt-3 container-fluid text-center shadow bg-white">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark p-2">
+
+        <a class="navbar-brand text-primary m-2" th:href="@{/}">HOME</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/users}">List User</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/posts}">List Post</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/users/new}">New User</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/posts/new}">New Post</a>
+                </li>
+                <!--            <li class="nav-item dropdown">-->
+                <!--                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                <!--                    Create-->
+                <!--                </a>-->
+                <!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                <!--                    <a class="dropdown-item" th:href="@{/users/new}">Create User</a>-->
+                <!--                    <div class="dropdown-divider"></div>-->
+                <!--                    <a class="dropdown-item" th:href="@{/posts/new}">Create Post</a>-->
+                <!--                    <div class="dropdown-divider"></div>-->
+                <!--                </div>-->
+                <!--            </li>-->
+            </ul>
+            <!--        <form class="form-inline my-2 my-lg-0">-->
+            <!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+            <!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+            <!--        </form>-->
+        </div>
+    </nav>
+
+
+    <div class="p-4 mt-3 container-fluid text-center shadow bg-white">
+        <h1 class="display-3">User List</h1>
+
+        <table class="table table-bordered p-4 mt-4  container-fluid text-center shadow text-center">
+            <thead>
+            <tr class="bg-dark text-light lead">
+                <th class="p-2 col-1">ID</th>
+                <th class="p-2 col-3">Text</th>
+                <th class="p-2 col-1">From Id</th>
+                <th class="p-2 col-3">Controller</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block  th:if="${post.u_id.id} == ${userId}" th:each="post: ${postList}">
+                <tr class="bg-white">
+                    <td>[[${post.id}]]</td>
+                    <td>[[${post.text}]]</td>
+                    <td>[[${post.u_id.id}]]</td>
+                    <td>
+                        <a th:href="@{'/posts/edit/' + ${post.id}}"><button type="button" class="btn btn-outline-warning m-2 lead"  disabled> Edit </button></a>
+                        <a th:href="@{'/posts/delete/' + ${post.id}}"><button type="button" class="btn btn-outline-danger m-2 lead" disabled> Delete </button></a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
