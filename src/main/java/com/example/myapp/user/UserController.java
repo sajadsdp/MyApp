@@ -16,6 +16,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("users")
     public String listUsers(Model model){
         List<User> userList = userRepository.findAll();
@@ -30,17 +33,25 @@ public class UserController {
         return "user_form";
     }
 
-    @PostMapping("/users/save")
-    public String saveUser(User user, RedirectAttributes ra){
-        userRepository.save(user);
-        ra.addFlashAttribute("massage1","The User Has Been Save Successfully");
+//    @PostMapping("/users/save")
+//    public String saveUser(User user, RedirectAttributes ra){
+//        userRepository.save(user);
+//        ra.addFlashAttribute("massage1","The User Has Been Save Successfully");
+//        return "redirect:/users";
+//    }
+
+    @PostMapping("/users/update")
+    public String updateOrsave(User user, RedirectAttributes ra){
+        userService.updateOrSave(user);
+        ra.addFlashAttribute("massage1","The User Has Been updated Successfully");
         return "redirect:/users";
     }
 
     @GetMapping("/users/edit/{id}")
-    public String editeUser(@PathVariable("id") Integer id,Model model){
+    public String editeUser(@PathVariable("id") Integer id, Model model){
         User user = userRepository.findById(id).get();
         model.addAttribute("pageTitle","Edite user ("+id+")");
+//        user.setId(id);
         model.addAttribute("user",user);
         return "user_form";
     }
