@@ -22,6 +22,9 @@ public class PostController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PostService postService;
+
     @GetMapping("posts")
     public String listPosts(Model model){
         List<Post> postList = postRepository.findAll();
@@ -49,8 +52,8 @@ public class PostController {
 
 
     @PostMapping("/posts/save")
-    public String savePosts(Post post, RedirectAttributes ra){
-        postRepository.save(post);
+    public String updateOrSave(Post post, RedirectAttributes ra){
+        postService.updateOrSavePost(post);
         ra.addFlashAttribute("massage1","The Post Has Been Save Successfully");
         return "redirect:/posts";
     }

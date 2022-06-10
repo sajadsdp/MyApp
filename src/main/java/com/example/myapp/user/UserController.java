@@ -33,17 +33,11 @@ public class UserController {
         return "user_form";
     }
 
-//    @PostMapping("/users/save")
-//    public String saveUser(User user, RedirectAttributes ra){
-//        userRepository.save(user);
-//        ra.addFlashAttribute("massage1","The User Has Been Save Successfully");
-//        return "redirect:/users";
-//    }
 
-    @PostMapping("/users/update")
-    public String updateOrsave(User user, RedirectAttributes ra){
-        userService.updateOrSave(user);
-        ra.addFlashAttribute("massage1","The User Has Been updated Successfully");
+    @PostMapping("/users/save")
+    public String updateOrSave(User user, RedirectAttributes ra){
+        userService.updateOrSaveUser(user);
+        ra.addFlashAttribute("massage1","The User Has Been saved Successfully");
         return "redirect:/users";
     }
 

@@ -1,11 +1,7 @@
 package com.example.myapp.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -18,15 +14,15 @@ public class UserService{
         this.repository = repository;
     }
 
-    public void updateOrSave(User object) {
-        Optional<User> user = repository.findById(object.getId());
+    public void updateOrSaveUser(User object) {
         if (object.getId() != null) {
-            if (user.isPresent()) {
+                Optional<User> user = repository.findById(object.getId());
                 User userToSave = user.get();
                 userToSave.setName(object.getName());
                 userToSave.setEmail(object.getEmail());
                 repository.save(userToSave);
-            }else {
+            }
+            if(object.getId() == null){
                 User user1 = new User();
                 user1.setName(object.getName());
                 user1.setEmail(object.getEmail());
@@ -35,4 +31,3 @@ public class UserService{
         }
     }
 
-}
