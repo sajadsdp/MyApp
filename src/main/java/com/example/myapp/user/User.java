@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Setter
@@ -26,6 +27,9 @@ public class User {
 
     @Column(nullable = false, length = 15)
     private String name;
+
+    @Column(nullable = true)
+    private String birthday;
 
     @OneToMany(mappedBy = "u_id", cascade = CascadeType.ALL)
     private Set<Post> posts;

@@ -65,6 +65,7 @@
                 <th class="p-2 col-1">ID</th>
                 <th class="p-2 col-2">Email</th>
                 <th class="p-2 col-1">Name</th>
+                <th class="p-2 col-1">Birthday</th>
                 <th class="p-2 col-4">Controller</th>
             </tr>
             </thead>
@@ -74,6 +75,7 @@
                     <td>[[${user.id}]]</td>
                     <td>[[${user.email}]]</td>
                     <td>[[${user.name}]]</td>
+                    <td>[[${user.birthday}]]</td>
                     <td>
                         <a th:href="@{'/users/edit/' + ${user.id}}"><button type="button" class="btn btn-outline-warning m-2 lead"  disabled> Edit </button></a>
                         <a th:href="@{'/users/delete/' + ${user.id}}"><button type="button" class="btn btn-outline-danger m-2 lead" disabled> Delete </button></a>

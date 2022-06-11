@@ -20,12 +20,14 @@ public class UserService{
                 User userToSave = user.get();
                 userToSave.setName(object.getName());
                 userToSave.setEmail(object.getEmail());
+                userToSave.setBirthday(object.getBirthday());
                 repository.save(userToSave);
             }
             if(object.getId() == null){
                 User user1 = new User();
                 user1.setName(object.getName());
                 user1.setEmail(object.getEmail());
+                user1.setBirthday(object.getBirthday());
                 repository.save(user1);
             }
         }
