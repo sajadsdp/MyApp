@@ -78,7 +78,7 @@
                     <td>[[${user.birthday}]]</td>
                     <td>
                         <a th:href="@{'/users/edit/' + ${user.id}}"><button type="button" class="btn btn-outline-warning m-2 lead"  disabled> Edit </button></a>
-                        <a th:href="@{'/users/delete/' + ${user.id}}"><button type="button" class="btn btn-outline-danger m-2 lead" disabled> Delete </button></a>
+                        <a onclick="if (confirm('are you sure deleted?!')){return true;}else{event.stopPropagation(); event.preventDefault();}" th:href="@{'/users/delete/' + ${user.id}}"><button type="button" class="btn btn-outline-danger m-2 lead" disabled> Delete </button></a>
                         <a th:href="@{'/posts/' + ${user.id}}"><button type="button" class="btn btn-outline-info m-2 lead" disabled> Post! </button></a>
                     </td>
                 </tr>

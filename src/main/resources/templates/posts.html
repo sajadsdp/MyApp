@@ -57,7 +57,7 @@
     </div>
 
         <div class="p-4 mt-3 container-fluid text-center shadow bg-white">
-            <h1 class="display-3">User List</h1>
+            <h1 class="display-3">Posts List</h1>
 
             <table class="table table-bordered p-4 mt-4  container-fluid text-center shadow text-center">
                 <thead>
@@ -76,7 +76,7 @@
                         <td>[[${post.u_id.id}]]</td>
                         <td>
                             <a th:href="@{'/posts/edit/' + ${post.id}}"><button type="button" class="btn btn-outline-warning m-2 lead"  disabled> Edit </button></a>
-                            <a th:href="@{'/posts/delete/' + ${post.id}}"><button type="button" class="btn btn-outline-danger m-2 lead" disabled> Delete </button></a>
+                            <a onclick="if (confirm('are you sure deleted?!')){return true;}else{event.stopPropagation(); event.preventDefault();}" th:href="@{'/posts/delete/' + ${post.id}}" ><button type="submit" class="btn btn-outline-danger m-2 lead" disabled> Delete </button></a>
                         </td>
                     </tr>
                 </th:block>
@@ -85,6 +85,5 @@
         </div>
 
 </div>
-
 </body>
 </html>

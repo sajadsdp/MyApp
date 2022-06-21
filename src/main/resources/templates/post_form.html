@@ -72,12 +72,9 @@
                     </div>
                 </div>
 
-                <div class="text-center" th:if="${id} == null">
-                    <button type="submit" class="btn btn-outline-primary m-2 lead" >Save</button>
-                    <button type="button" class="btn btn-outline-secondary m-2 lead" onclick="cancelForm() ">Cancel!</button>
-                </div>
-                <div class="text-center" th:if="${id} != null">
-                    <button type="submit" class="btn btn-outline-primary m-2 lead" >Update</button>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-outline-primary m-2 lead" th:if="${id} == null" >Save</button>
+                    <button type="submit" class="btn btn-outline-primary m-2 lead" th:if="${id} != null" >Update</button>
                     <button type="button" class="btn btn-outline-secondary m-2 lead" onclick="cancelForm() ">Cancel!</button>
                 </div>
             </div>
