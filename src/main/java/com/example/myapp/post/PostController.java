@@ -1,5 +1,6 @@
 package com.example.myapp.post;
 
+import com.example.myapp.Aop.Log;
 import com.example.myapp.user.User;
 import com.example.myapp.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class PostController {
         return "post_form";
     }
 
-
+    @Log
     @PostMapping("/posts/save")
     public String updateOrSave(Post post, RedirectAttributes ra){
         postService.updateOrSavePost(post);
