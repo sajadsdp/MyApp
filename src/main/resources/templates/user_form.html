@@ -53,7 +53,7 @@
     <div class="container-fluid">
         <h1 class="text-center display-3">[[${pageTitle}]]</h1>
 
-        <form th:action="@{/users/save}" th:method="post" th:object="${user}"
+        <form th:action="@{/users/save} " th:method="post" th:object="${user}"
               style="max-width: 500px; margin: 0 auto;">
             <div class="border border-secondary rounded p-3 lead">
                 <div class="form-group row m-2" hidden>
@@ -66,6 +66,7 @@
                     <label class="col-sm-4 col-form-label">Email:</label>
                     <div class="col-sm-8">
                         <input  name="email" type="text" th:field="*{email}" class="form-control" />
+<!--                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email errors</span>-->
                     </div>
                 </div>
 
@@ -91,6 +92,7 @@
                     <button type="button" class="btn btn-outline-secondary m-2 lead" onclick="cancelForm() ">Cancel!</button>
                 </div>
             </div>
+        </form>
     </div>
 </div>
 

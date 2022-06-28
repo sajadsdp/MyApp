@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -28,6 +29,7 @@ public class User {
     @Column(nullable = false, length = 15)
     private String name;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     @Column(nullable = true)
     private String birthday;
 
