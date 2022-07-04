@@ -7,6 +7,8 @@ import com.example.myapp.Utils.ValidationValues;
 import com.example.myapp.post.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -63,6 +65,10 @@ public class UserService {
             repository.save(user1);
         }
         return object;
+    }
+
+    public List<User> getAllUsers(){
+        return repository.findAll();
     }
 
 }
