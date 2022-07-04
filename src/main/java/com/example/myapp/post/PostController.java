@@ -51,7 +51,6 @@ public class PostController {
         return "post_form";
     }
 
-    @Log
     @PostMapping("/posts/save")
     public String updateOrSave(Post post, RedirectAttributes ra){
         postService.updateOrSavePost(post);

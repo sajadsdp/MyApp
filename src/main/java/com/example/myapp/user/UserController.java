@@ -1,5 +1,6 @@
 package com.example.myapp.user;
 
+import com.example.myapp.Aop.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +43,7 @@ public class UserController {
             return "redirect:/users";
     }
 
+
     @GetMapping("/users/edit/{id}")
     public String editeUser(@PathVariable("id") Integer id, Model model){
         User user = userRepository.findById(id).get();
@@ -56,6 +58,5 @@ public class UserController {
         ra.addFlashAttribute("massage","The User Id("+id+") has been deleted ");
         return "redirect:/users";
     }
-
 
 }
