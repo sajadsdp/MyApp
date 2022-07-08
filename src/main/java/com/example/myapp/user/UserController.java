@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.supercsv.io.ICsvBeanReader;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
 
 @Controller
 public class UserController {
@@ -65,9 +68,14 @@ public class UserController {
     }
 
     @GetMapping("/download/user")
-    public void downloadCsv(HttpServletResponse response) throws IOException {
+    public void downloadCsv(HttpServletResponse response,RedirectAttributes ra) throws IOException {
         List<User> listUsers = userService.getAllUsers();
-        export.exportToVSC(listUsers,response);
+        Export.ExCsv task = new Export.ExCsv();
+        task.call(listUsers,response);
+//        Export.ExThread Exthread = new Export.ExThread();
+//        Exthread.start();
+//        Exthread.run(listUsers,response);
+//        export.exportToVSC(listUsers,response);
     }
 
 }
